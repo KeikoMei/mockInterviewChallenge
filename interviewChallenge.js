@@ -10,6 +10,13 @@ This challenge (deliberately) does not give any guidance about ranges, input val
 //Function to generate and return a random number
 function generateRandomNumber ()
 {
+    let randomNumber=0; //Create a variable to store the number and initialize to 0
+
+    //To generate the random number, I use the javascript function Math.random(). This generates a number between 0 and 1
+    //I use a range between 0 and 10 to make at least a bit challenging, but easy enough to test
+    //Since Math.random() generates a decimal number, I use Math.floor() to make it an integer
+    randomNumber = Math.floor(Math.random() * 11); // Random integer between 0 and 11
+    
     return randomNumber;
 }
 
@@ -43,4 +50,5 @@ function playGame ()
 }
 
 //executes the playGame function
-playGame ();
+//playGame ();
+console.log (generateRandomNumber ()); //debug to see if it works correctly
