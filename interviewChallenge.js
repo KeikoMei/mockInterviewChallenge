@@ -17,6 +17,7 @@ function generateRandomNumber ()
     //Since Math.random() generates a decimal number, I use Math.floor() to make it an integer
     randomNumber = Math.floor(Math.random() * 11); // Random integer between 0 and 11
     
+    //console.log ("machine number: " + randomNumber); debug to test
     return randomNumber;
 }
 
@@ -25,25 +26,27 @@ function takePlayerGuess ()
 {
     //Generates a prompt for the user input and returns the input
     let playerGuess = prompt("What number am I thinking of?");
-    
+
     //To do: add a validation rule so the user only can enter numbers
     return playerGuess;
-
-    
 }
 
 //function to determine if the player's guess is lower, higher or the same than the machine generated number
 function isItlowerOrHiguer (numberToGuess, playerGuess)
 {
     //if the guess is higher
-    //return (`You answered ${playerGuess}. The correct answer is higher.`);
-
-    //if the guess is lower
-    //return (`You answered ${playerGuess}. The correct answer is lower.`);
-
-    //if the guess is correct
-    //return (`You answered ${playerGuess}. This is the correct answer.`);
-
+    if (numberToGuess > playerGuess)
+    {
+        return (`You answered ${playerGuess}. The correct answer is higher.`);
+    }
+    else if (numberToGuess < playerGuess) //if the guess is lower
+    {
+        return (`You answered ${playerGuess}. The correct answer is lower.`);
+    }
+    else if (playerGuess == numberToGuess) //if the guess is correct
+    {
+        return (`You answered ${playerGuess}. This is the correct answer!`);
+    }
 }
 
 //function to play the game
@@ -56,6 +59,8 @@ function playGame ()
 }
 
 //executes the playGame function
-//playGame ();
-console.log (generateRandomNumber ()); //debug to see if it works correctly
-console.log(takePlayerGuess ()); //debug to see if it works correctly
+playGame ();
+//console.log (generateRandomNumber ()); //debug to see if it works correctly
+//console.log(takePlayerGuess ()); //debug to see if it works correctly
+//console.log(isItlowerOrHiguer (numberToGuess, playerGuess));
+//console.log(isItlowerOrHiguer (8, 9));
