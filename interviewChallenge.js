@@ -23,6 +23,12 @@ function generateRandomNumber ()
 //Function to take the player's guess
 function takePlayerGuess ()
 {
+    //Generates a prompt for the user input and returns the input
+    let playerGuess = prompt("What number am I thinking of?");
+    
+    //To do: add a validation rule so the user only can enter numbers
+    return playerGuess;
+
     
 }
 
@@ -52,3 +58,4 @@ function playGame ()
 //executes the playGame function
 //playGame ();
 console.log (generateRandomNumber ()); //debug to see if it works correctly
+console.log(takePlayerGuess ()); //debug to see if it works correctly
