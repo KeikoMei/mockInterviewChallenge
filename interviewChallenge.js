@@ -8,7 +8,9 @@ This challenge (deliberately) does not give any guidance about ranges, input val
 */
 
 //Function to generate and return a random number
-function generateRandomNumber ()
+let randomNumber = Math.floor(Math.random() * 11); // Random integer between 0 and 11
+console.log (randomNumber); 
+/*function generateRandomNumber ()
 {
     let randomNumber=0; //Create a variable to store the number and initialize to 0
 
@@ -17,45 +19,58 @@ function generateRandomNumber ()
     //Since Math.random() generates a decimal number, I use Math.floor() to make it an integer
     randomNumber = Math.floor(Math.random() * 11); // Random integer between 0 and 11
     
-    //console.log ("machine number: " + randomNumber); debug to test
+    console.log ("machine number: " + randomNumber); 
     return randomNumber;
-}
+}*/
 
 //Function to take the player's guess
 function takePlayerGuess ()
 {
     //Generates a prompt for the user input and returns the input
-    let playerGuess = prompt("What number am I thinking of?");
+    //let playerGuess = prompt("What number am I thinking of?");
+    let playerGuess = document.getElementById("guess").value;
+   
 
     //To do: add a validation rule so the user only can enter numbers
     return playerGuess;
 }
 
+
+
+
 //function to determine if the player's guess is lower, higher or the same than the machine generated number
 function isItlowerOrHiguer (numberToGuess, playerGuess)
 {
-    //if the guess is higher
-    if (numberToGuess > playerGuess)
-    {
-        return (`You answered ${playerGuess}. The correct answer is higher.`);
+    do
+    { 
+        //if the guess is higher
+        if (numberToGuess > playerGuess)
+        {
+            return (`You answered ${playerGuess}. The correct answer is higher.`);
+        }
+        else if (numberToGuess < playerGuess) //if the guess is lower
+        {
+            return (`You answered ${playerGuess}. The correct answer is lower.`);
+        }
+        else if (playerGuess == numberToGuess) //if the guess is correct
+        {
+            return (`You answered ${playerGuess}. This is the correct answer!`);
+        }
+        
+        }while (playerGuess == numberToGuess)
+
     }
-    else if (numberToGuess < playerGuess) //if the guess is lower
-    {
-        return (`You answered ${playerGuess}. The correct answer is lower.`);
-    }
-    else if (playerGuess == numberToGuess) //if the guess is correct
-    {
-        return (`You answered ${playerGuess}. This is the correct answer!`);
-    }
-}
 
 //function to play the game
 function playGame ()
 {
-    let numberToGuess = generateRandomNumber ();
+    let numberToGuess = randomNumber;
     let playerGuess = takePlayerGuess ();
+    let result = isItlowerOrHiguer (numberToGuess, playerGuess);
    
-    console.log (isItlowerOrHiguer (numberToGuess, playerGuess));
+  //  console.log (result);
+    document.getElementById("result").textContent = result;
+
 }
 
 //executes the playGame function
